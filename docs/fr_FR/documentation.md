@@ -4,7 +4,7 @@
 * [Les objets Jeedom](#les-objets-jeedom)
   * [Les méthodes héritées de la classe eqLogic](#les-méthodes-héritées-de-la-classe-eqlogic)
     * [Les méthodes de classe](#les-méthodes-de-classe)
-    * [Les méthodes de classe](#les-méthodes-statiques)
+    * [Les méthodes de statiques](#les-méthodes-statiques)
   * [Les commandes des objets](#les-commandes-des-objets)
 * [Les requêtes Ajax](#les-requêtes-ajax)
 
@@ -115,6 +115,8 @@ public static function cronDaily()
 Méthode appelée tous les jours par Jeedom.
 
 ## Les commandes des objets
+
+Les commandes des objets sont traitées par le fichier [ExtraTemplateCmd.class.php](../../core/class/ExtraTemplateCmd.class.php).
 
 > Ce fichier doit être inclut à partir du fichier [ExtraTemplate.class.php](../../core/class/ExtraTemplate.class.php).
 
