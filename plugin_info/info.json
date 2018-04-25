@@ -1,0 +1,14 @@
+{
+  "id": "ExtraTemplate",
+  "name": "ExtraTemplate",
+  "description": "Plugin template pour la création de plugin",
+  "licence": "AGPL",
+  "author": "Jeedom-Plugins-Extra",
+  "require": "3.0",
+  "category": "programming",
+  "hasDependency": false,
+  "hasOwnDeamon": false,
+  "maxDependancyInstallTime": 0,
+  "changelog": "https://jeedom.github.io/plugin-ExtraTemplate/#language#/changelog",
+  "documentation": "https://jeedom.github.io/plugin-ExtraTemplate/#language#/"
+}

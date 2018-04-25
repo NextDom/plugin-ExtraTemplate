@@ -1,0 +1,32 @@
+{
+  "plugins\/ExtraTemplate\/desktop\/php\/ExtraTemplate.php": {
+    "Action": "Action",
+    "Activer": "Activer",
+    "Ajouter": "Ajouter",
+    "Ajouter un ExtraTemplate": "Ajouter un ExtraTemplate",
+    "Aucun": "Aucun",
+    "Catégorie": "Catégorie",
+    "Commandes": "Commandes",
+    "Configuration": "Configuration",
+    "Configuration avancée": "Configuration avancée",
+    "Equipement": "Equipement",
+    "Gestion": "Gestion",
+    "Mes ExtraTemplates": "Mes ExtraTemplates",
+    "Nom": "Nom",
+    "Nom de l'équipement ExtraTemplate": "Nom de l'équipement ExtraTemplate",
+    "Objet parent": "Objet parent",
+    "Rechercher": "Rechercher",
+    "Sauvegarder": "Sauvegarder",
+    "Supprimer": "Supprimer",
+    "Type": "Type",
+    "Visible": "Visible"
+  },
+  "plugins\/ExtraTemplate\/plugin_info\/configuration.php": {
+    "Global param 1": "Premier paramètre global",
+    "Global param 2": "Deuxième paramètre global",
+    "Global param 3": "Troisième paramètre global",
+    "Default value": "Valeur par défaut",
+    "First value": "Première valeur",
+    "Second value": "Deuxième valeur"
+  }
+}
