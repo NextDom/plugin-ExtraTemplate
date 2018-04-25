@@ -1,19 +1,18 @@
 matrix:
   include:
-    - language:  php
-      php: 5.6
+    - language: php
+      php: 7.1
+      install:
+       - composer install
+       - mkdir -p build/logs
       before_script:
-          - find . -type f -name *.php | xargs -n1 php -l
+        - find . -type f -name *.php -not -path "./vendor/*" | xargs -n1 php -l
       script:
-          - cd ${TRAVIS_BUILD_DIR}
-          - pwd
-      after_success:
-          - cd ${TRAVIS_BUILD_DIR}
-          - ls -latr
-      after_failure:
-          - cd ${TRAVIS_BUILD_DIR}
-          - ls -latr
-
+       - cd ${TRAVIS_BUILD_DIR}
+       - ./tests/launch_tests.sh
+      after_script:
+       - sed -i'' 's/tests\/mocked_Jeedom_env\/plugins\/ExtraTemplate\///g' clover.xml
+       - php vendor/bin/php-coveralls
     - language: python
       python: 2.7
       install:
