@@ -1,9 +1,13 @@
 <?php
+// Test si l'utilisateur est connecté
 if (!isConnect('admin')) {
     throw new \Exception('{{401 - Accès non autorisé}}');
 }
+// Obtenir l'identifiant du plugin
 $plugin = plugin::byId('ExtraTemplate');
+// Charge les objets pour être accessible en Javascript
 sendVarToJS('eqType', $plugin->getId());
+// Liste des objets du plugin
 $eqLogics = eqLogic::byType($plugin->getId());
 ?>
 
@@ -177,5 +181,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
     </div>
 
 <?php
+// Charge le fichier Javascript du plugin
 include_file('desktop', 'ExtraTemplate', 'js', 'ExtraTemplate');
+// Charge le fichier général des plugins de Jeedom
 include_file('core', 'plugin.template', 'js');
