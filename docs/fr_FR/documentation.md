@@ -28,6 +28,7 @@
     * __ExtraTemplate.css__ : [Fichier CSS de la page principale](#ajout-du-css)
   * _php_ : 
     * __ExtraTemplate.php__ : [Page principale du plugin](#la-page-principale-du-plugin)
+* _plugin_info_ : [Répertoire contenant les fichiers d'informations](#les-informations-du-plugin)
     
 # La page principale du plugin
 
@@ -101,35 +102,35 @@ L'étape suivant consiste à ajouter la ligne au tableau avec les contraintes su
   * Chaque `<input>` doit posséder la classe Bootstrap __form-control__,
   * Une cellule doit indiquer le type de commande. L'ajout des listes de choix se fera par le Javascript de Jeedom : 
   ```javascript
-    var typeCell  '<span class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>' +
-                  '<span class="subType" subType="' + init(_cmd.subType) + '"></span>';
+    var typeCell  '<span class="type" type="' + init(_cmd.type) + ' : ' + jeedom.cmd.availableType() + '</span>' +
+                  '<span class="subType" subType="' + init(_cmd.subType) + ' : </span>';
   ```
   * Si la commande est numérique, il est possible d'ajouter un bouton de configuration et de test : 
   ```javascript
     if (is_numeric(_cmd.id)) {
-        var commandCell = '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fa fa-cogs"></i></a> ' +
-                          '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fa fa-rss"></i> {{Tester}}</a>';
+        var commandCell = '<a class="btn btn-default btn-xs cmdAction" data-action="configure : <i class="fa fa-cogs : </i></a> ' +
+                          '<a class="btn btn-default btn-xs cmdAction" data-action="test : <i class="fa fa-rss : </i> {{Tester}}</a>';
     }
   ```
   * Pour offrir la possibilité de supprimer une commande, il faut ajouter une balise avec la classe __cmdAction__ et un attribut __data-action__ avec la valeur __remove__.
 
 Exemple : 
 ```javascript
-    var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">' +
+    var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + ' : ' +
              '<td>' +
-               '<span class="cmdAttr" data-l1key="id" style="display:none;"></span>' +
-               '<input class="cmdAttr form-control input-sm" data-l1key="name" style="width : 140px;" placeholder="{{Nom}}">' +
+               '<span class="cmdAttr" data-l1key="id" style="display:none; : </span>' +
+               '<input class="cmdAttr form-control input-sm" data-l1key="name" style="width : 140px;" placeholder="{{Nom}} : ' +
              '</td>' +
              '<td>' +
-               '<span class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>' +
-               '<span class="subType" subType="' + init(_cmd.subType) + '"></span>' +
+               '<span class="type" type="' + init(_cmd.type) + ' : ' + jeedom.cmd.availableType() + '</span>' +
+               '<span class="subType" subType="' + init(_cmd.subType) + ' : </span>' +
              '</td>' +
              '<td>';
     if (is_numeric(_cmd.id)) {
-        tr +=  '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fa fa-cogs"></i></a> ' +
-               '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fa fa-rss"></i> {{Tester}}</a>';
+        tr +=  '<a class="btn btn-default btn-xs cmdAction" data-action="configure : <i class="fa fa-cogs : </i></a> ' +
+               '<a class="btn btn-default btn-xs cmdAction" data-action="test : <i class="fa fa-rss : </i> {{Tester}}</a>';
     }
-    tr +=       '<i class="fa fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i>' + 
+    tr +=       '<i class="fa fa-minus-circle pull-right cmdAction cursor" data-action="remove : </i>' + 
               '</td>';
             '</tr>';
 ```
@@ -150,7 +151,10 @@ Il faut maintenant l'ajouter à la page puis l'initialiser :
 Pour ajouter un fichier CSS, il faudra ajouter la ligne suivante au plugin : 
 
 ```
+include_file('desktop', 'ExtraTemplate', 'css', 'ExtraTemplate'); 
 ```
+
+Puis créer un répertoire CSS puis un fichier CSS avec pour nom l'identifiant du plugin : [ExtraTemplate.css](../../desktop/css/ExtraTemplate.css)
 
 # Les objets Jeedom
 
@@ -304,3 +308,34 @@ Il faut "entourer" la chaine de caractères avec 2 accolades :
 <button>{{Cliquez ici}}</button>
 ``` 
 
+# Les informations du plugin
+
+## Informations générales : info.json
+
+Ce fichier au format JSON contient les informations du plugin et indispensable pour son bon fonctionnement : 
+* id : Identifiant, ne doit pas contenir d'espaces ni de caractères spéciaux autres que . et _,
+* name : Nom affiché dans Jeedom,
+* description : Description succinte,
+* licence : Licence sous laquelle le plugin est distribué,
+* author : Auteur,
+* require : Version minimum de Jeedom nécessaire,
+* category : Catégorie du plugin parmis : 
+  * security : Sécurité,
+  * automation protocol : Protocole domotique,
+  * programming : Programmation,
+  * organization : Organisation,
+  * weather : Météo,
+  * communication : Communication,
+  * devicecommunication : Objets communicants,
+  * multimedia : Multimédia,
+  * wellness : Bien-être,
+  * monitoring : Monitoring,
+  * health : Santé,
+  * nature : Nature,
+  * automatisation : Automatisme,
+  * energy : Energie,
+* hasDependency : Booléen pour indiquer si des dépendances doivent être installées,
+* hasOwnDaemon : Booléen pour indiquer si le plugin utilise un daemon,
+* maxDependencyInstallTime : Temps limite pour installer les dépendances,
+* changelog : Lien vers le changelog,
+* documentation : Lien vers la documentation.
