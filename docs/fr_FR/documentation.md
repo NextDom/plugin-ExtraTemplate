@@ -23,9 +23,9 @@
   * _i18n_ : [Répertoire contenant les traductions du plugin](#les-traductions)
 * _desktop_ : [Répertoire contenant les fichiers liés à la page principale du plugin](#la-page-principale-du-plugin)
   * _js_
-    * ExtraTemplate.js : [Fichier Javascript de votre page principale](#gestion-des-commandes-de-vos-objets)
+    * __ExtraTemplate.js__ : [Fichier Javascript de votre page principale](#gestion-des-commandes-de-vos-objets)
   * _php_ : 
-    * ExtraTemplate.php : [Page principale du plugin](#la-page-principale-du-plugin)
+    * __ExtraTemplate.php__ : [Page principale du plugin](#la-page-principale-du-plugin)
     
 # La page principale du plugin
 
@@ -35,7 +35,7 @@ C'est à partir de celle-ci que les principales actions devront être réalisée
 
 Elle commence généralement par une vérification de l'authentification de l'utilisateur : 
 
-```
+```php
 if (!isConnect('admin')) {
     throw new \Exception('{{401 - Accès non autorisé}}');
 }
@@ -47,7 +47,7 @@ Une fois cette vérification effectuée, le contenu de la page peut être écrit
 
 Les fichiers Javascript nécessaire au bon fonctionnement sont ajouté à la fin du document : 
 
-```
+```php
 // Charge le fichier Javascript du plugin
 include_file('desktop', 'ExtraTemplate', 'js', 'ExtraTemplate');
 // Charge le fichier général des plugins de Jeedom
@@ -67,7 +67,81 @@ La page est généralement divisée en 3 parties :
 
 ## Gestion des commandes de vos objets
 
-C'est ce fichier Javascript qui va gérer l'affichage et le lien avec Jeedom de vos commandes.
+L'affichage et l'ajout des commandes dans l'interface sont réalisées par le fichier [ExtraTemplate.js](../../desktop/js/ExtraTemplate.js).
+
+La gestion des commandes se fait par la fonction __addCmdToTable__
+
+### addCmdToTable
+
+Cette fonction possède un paramète ___cmd__ par lequel sont transmis les informations des commandes créées par défaut envoyées par Jeedom.
+
+```javascript
+function addCmdToTable(_cmd)
+```
+
+Il est cependant possible d'appeler directement cette fonction, cette pourquoi il est indispensable de vérifier et corriger la conformité de celle-ci : 
+```javascript
+    if (!isset(_cmd)) {
+        var _cmd = {configuration: {}};
+    }
+    if (!isset(_cmd.configuration)) {
+        _cmd.configuration = {};
+    }
+```
+
+L'étape suivant consiste à ajouter la ligne au tableau avec les contraintes suivantes : 
+* La ligne (`<tr>`) : 
+  * Classe __cmd__,
+  * Attribut __data-cmd_id__ avec pour valeur l'identifiant de la commande,
+* Les colonnes (`<td>`) : 
+  * Les balises contenant des données doivent posséder l'attribut __data-l1key__ avec pour valeur l'identifiant de la donnée et la classe __cmdAttr__,
+  * Communément, la première cellule contiendra une balise `<span>` cachée à laquelle on attribut l'identifiant de la commande,
+  * Chaque `<input>` doit posséder la classe Bootstrap __form-control__,
+  * Une cellule doit indiquer le type de commande. L'ajout des listes de choix se fera par le Javascript de Jeedom : 
+  ```javascript
+    var typeCell  '<span class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>' +
+                  '<span class="subType" subType="' + init(_cmd.subType) + '"></span>';
+  ```
+  * Si la commande est numérique, il est possible d'ajouter un bouton de configuration et de test : 
+  ```javascript
+    if (is_numeric(_cmd.id)) {
+        var commandCell = '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fa fa-cogs"></i></a> ' +
+                          '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fa fa-rss"></i> {{Tester}}</a>';
+    }
+  ```
+  * Pour offrir la possibilité de supprimer une commande, il faut ajouter une balise avec la classe __cmdAction__ et un attribut __data-action__ avec la valeur __remove__.
+
+Exemple : 
+```javascript
+    var tr = '<tr class="cmd" data-cmd_id="' + init(_cmd.id) + '">' +
+             '<td>' +
+               '<span class="cmdAttr" data-l1key="id" style="display:none;"></span>' +
+               '<input class="cmdAttr form-control input-sm" data-l1key="name" style="width : 140px;" placeholder="{{Nom}}">' +
+             '</td>' +
+             '<td>' +
+               '<span class="type" type="' + init(_cmd.type) + '">' + jeedom.cmd.availableType() + '</span>' +
+               '<span class="subType" subType="' + init(_cmd.subType) + '"></span>' +
+             '</td>' +
+             '<td>';
+    if (is_numeric(_cmd.id)) {
+        tr +=  '<a class="btn btn-default btn-xs cmdAction" data-action="configure"><i class="fa fa-cogs"></i></a> ' +
+               '<a class="btn btn-default btn-xs cmdAction" data-action="test"><i class="fa fa-rss"></i> {{Tester}}</a>';
+    }
+    tr +=       '<i class="fa fa-minus-circle pull-right cmdAction cursor" data-action="remove"></i>' + 
+              '</td>';
+            '</tr>';
+```
+
+Il faut maintenant l'ajouter à la page puis l'initialiser : 
+
+```javascript
+    $('#table_cmd tbody').append(tr);
+    $('#table_cmd tbody tr:last').setValues(_cmd, '.cmdAttr');
+    if (isset(_cmd.type)) {
+        $('#table_cmd tbody tr:last .cmdAttr[data-l1key=type]').value(init(_cmd.type));
+    }
+    jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
+```
 
 # Les objets Jeedom
 
