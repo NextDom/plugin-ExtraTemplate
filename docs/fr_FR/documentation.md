@@ -21,9 +21,11 @@
     * __ExtraTemplate.class.php__ : [Fichier de gestion des objets](#les-objets-jeedom)
     * __ExtraTemplateCmd.class.php__ : [Fichier de gestion des commandes des objets](#les-commandes-des-objets)
   * _i18n_ : [Répertoire contenant les traductions du plugin](#les-traductions)
-* _desktop_ : [Répertoire contenant les fichiers liés à la page principale du plugin](#la-page-principale-du-plugin)
+* _desktop_ : [Répertoire contenant les fichiers liés à la page principale](#la-page-principale-du-plugin)
   * _js_
-    * __ExtraTemplate.js__ : [Fichier Javascript de votre page principale](#gestion-des-commandes-de-vos-objets)
+    * __ExtraTemplate.js__ : [Fichier Javascript de la page principale](#gestion-des-commandes-de-vos-objets)
+  * _css_
+    * __ExtraTemplate.css__ : [Fichier CSS de la page principale](#ajout-du-css)
   * _php_ : 
     * __ExtraTemplate.php__ : [Page principale du plugin](#la-page-principale-du-plugin)
     
@@ -141,6 +143,13 @@ Il faut maintenant l'ajouter à la page puis l'initialiser :
         $('#table_cmd tbody tr:last .cmdAttr[data-l1key=type]').value(init(_cmd.type));
     }
     jeedom.cmd.changeType($('#table_cmd tbody tr:last'), init(_cmd.subType));
+```
+
+## Ajout du CSS
+
+Pour ajouter un fichier CSS, il faudra ajouter la ligne suivante au plugin : 
+
+```
 ```
 
 # Les objets Jeedom
