@@ -26,18 +26,16 @@ $eqLogics = eqLogic::byType($plugin->getId());
         </div>
     </div>
 
-    <div class="col-lg-10 col-md-9 col-sm-8 eqLogicThumbnailDisplay" style="border-left: solid 1px #EEE; padding-left: 25px;">
+    <div class="col-lg-10 col-md-9 col-sm-8 eqLogicThumbnailDisplay">
         <legend><i class="fa fa-cog"></i> {{Gestion}}</legend>
         <div class="eqLogicThumbnailContainer">
-            <div class="cursor eqLogicAction" data-action="add">
-                <i class="fa fa-plus-circle green-text"></i>
-                <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02">{{Ajouter}}</span>
+            <div class="cursor eqLogicAction green-text" data-action="add">
+                <i class="fa fa-plus-circle"></i>
+                <span>{{Ajouter}}</span>
             </div>
-            <div class="cursor eqLogicAction" data-action="gotoPluginConf"
-                 style="text-align: center; background-color : #ffffff; height : 140px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;">
-                <i class="fa fa-wrench" style="font-size : 6em;color:#767676;"></i>
-                <br>
-                <span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#767676">{{Configuration}}</span>
+            <div class="cursor eqLogicAction grey-text" data-action="gotoPluginConf">
+                <i class="fa fa-wrench"></i>
+                <span>{{Configuration}}</span>
             </div>
         </div>
         <legend><i class="fa fa-table"></i> {{Mes ExtraTemplates}}</legend>
@@ -45,10 +43,9 @@ $eqLogics = eqLogic::byType($plugin->getId());
             <?php
             foreach ($eqLogics as $eqLogic) {
                 $opacity = ($eqLogic->getIsEnable()) ? '' : jeedom::getConfiguration('eqLogic:style:noactive');
-                echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="text-align: center; background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;' . $opacity . '" >';
-                echo '<img src="' . $plugin->getPathImgIcon() . '" height="105" width="95" />';
-                echo "<br>";
-                echo '<span style="font-size : 1.1em;position:relative; top : 15px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;">' . $eqLogic->getHumanName(true, true) . '</span>';
+                echo '<div class="eqLogicDisplayCard cursor grey-text" data-eqLogic_id="' . $eqLogic->getId() . '" style="' . $opacity . '" >';
+                echo '<img src="' . $plugin->getPathImgIcon() . '" />';
+                echo '<span>' . $eqLogic->getHumanName(true, true) . '</span>';
                 echo '</div>';
             }
             ?>
@@ -171,11 +168,9 @@ $eqLogics = eqLogic::byType($plugin->getId());
 </div>
 
 <?php
-<<<<<<< Updated upstream
-=======
 // Charge le fichier CSS du plugin
 include_file('desktop', 'ExtraTemplate', 'css', 'ExtraTemplate');
 // Charge le fichier Javascript du plugin
->>>>>>> Stashed changes
 include_file('desktop', 'ExtraTemplate', 'js', 'ExtraTemplate');
+// Charge le fichier général des plugins de Jeedom
 include_file('core', 'plugin.template', 'js');

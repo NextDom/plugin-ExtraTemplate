@@ -12,7 +12,8 @@
     width: 100%;
 }
 
-.eqLogicThumbnailContainer > .eqLogicAction {
+.eqLogicThumbnailContainer .eqLogicAction,
+.eqLogicThumbnailContainer .eqLogicDisplayCard {
     text-align: center;
     background-color: #ffffff;
     height: 140px;
@@ -23,10 +24,43 @@
     margin-left: 10px;
 }
 
-.eqLogicThumbnailContainer > .eqLogicAction > i {
+.eqLogicThumbnailContainer .eqLogicAction > i {
     font-size: 6em;
+    display: block;
+}
+
+.eqLogicThumbnailContainer .eqLogicAction > span {
+    top: 23px;
+}
+
+.eqLogicThumbnailContainer .eqLogicAction > span,
+.eqLogicThumbnailContainer .eqLogicDisplayCard > span {
+    font-size: 1.1em;
+    position: relative;
+    word-break: break-all;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.eqLogicThumbnailContainer .eqLogicDisplayCard > span {
+    display: block;
+    top: 2px;
+}
+
+.eqLogicThumbnailContainer .eqLogicDisplayCard > img {
+    width: 6em;
+    height: 6em;
+}
+
+.eqLogicThumbnailDisplay {
+    border-left: solid 1px #EEE;
+    padding-left: 25px;
 }
 
 .green-text {
     color: #94ca02;
+}
+
+.grey-text {
+    color: #767676;
 }
