@@ -16,7 +16,7 @@
   * [Dans du code PHP](#dans-du-code-php)
   * [Dans du code HTML](#dans-du-code-html)
 * [Les informations du plugin](#les-informations-du-plugin)
-  * [Les informations générales : info.json](#informations-générales-:-info.json)
+  * [Les informations générales : info.json](#informations-générales--info.json)
 
 # Structure des fichiers
 
