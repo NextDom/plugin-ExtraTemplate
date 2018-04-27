@@ -2,6 +2,10 @@
 
 * [Structure des fichiers](#structure-des-fichiers)
 * [La page principale du plugin](#la-page-principale-du-plugin)
+  * [Contenu](#contenu)
+  * [Gestion des commandes des objets](#gestion-des-commandes-de-vos-objets)
+    * [addToCmdTable](#addcmdtotable)
+  * [Ajout du CSS](#ajout-du-css)
 * [Les objets Jeedom](#les-objets-jeedom)
   * [Les méthodes héritées de la classe eqLogic](#les-méthodes-héritées-de-la-classe-eqlogic)
     * [Les méthodes de classe](#les-méthodes-de-classe)
@@ -11,6 +15,8 @@
 * [Les traductions](#les-traductions)
   * [Dans du code PHP](#dans-du-code-php)
   * [Dans du code HTML](#dans-du-code-html)
+* [Les informations du plugin](#les-informations-du-plugin)
+  * [Les informations générales : info.json](#informations-générales-:-info.json)
 
 # Structure des fichiers
 
@@ -29,6 +35,7 @@
   * _php_ : 
     * __ExtraTemplate.php__ : [Page principale du plugin](#la-page-principale-du-plugin)
 * _plugin_info_ : [Répertoire contenant les fichiers d'informations](#les-informations-du-plugin)
+  * __info.json__ : [Informations générales](#informations-générales-:-info.json)
     
 # La page principale du plugin
 
@@ -313,29 +320,29 @@ Il faut "entourer" la chaine de caractères avec 2 accolades :
 ## Informations générales : info.json
 
 Ce fichier au format JSON contient les informations du plugin et indispensable pour son bon fonctionnement : 
-* id : Identifiant, ne doit pas contenir d'espaces ni de caractères spéciaux autres que . et _,
-* name : Nom affiché dans Jeedom,
-* description : Description succinte,
-* licence : Licence sous laquelle le plugin est distribué,
-* author : Auteur,
-* require : Version minimum de Jeedom nécessaire,
-* category : Catégorie du plugin parmis : 
-  * security : Sécurité,
-  * automation protocol : Protocole domotique,
-  * programming : Programmation,
-  * organization : Organisation,
-  * weather : Météo,
-  * communication : Communication,
-  * devicecommunication : Objets communicants,
-  * multimedia : Multimédia,
-  * wellness : Bien-être,
-  * monitoring : Monitoring,
-  * health : Santé,
-  * nature : Nature,
-  * automatisation : Automatisme,
-  * energy : Energie,
-* hasDependency : Booléen pour indiquer si des dépendances doivent être installées,
-* hasOwnDaemon : Booléen pour indiquer si le plugin utilise un daemon,
-* maxDependencyInstallTime : Temps limite pour installer les dépendances,
-* changelog : Lien vers le changelog,
-* documentation : Lien vers la documentation.
+* __id__ : Identifiant, ne doit pas contenir d'espaces ni de caractères spéciaux autres que . et _,
+* __name__ : Nom affiché dans Jeedom,
+* __description__ : Description succinte,
+* __licence__ : Licence sous laquelle le plugin est distribué,
+* __author__ : Auteur,
+* __require__ : Version minimum de Jeedom nécessaire,
+* __category__ : Catégorie du plugin parmis : 
+  * _security_ : Sécurité,
+  * _automation protocol_ : Protocole domotique,
+  * _programming_ : Programmation,
+  * _organization_ : Organisation,
+  * _weather_ : Météo,
+  * _communication_ : Communication,
+  * _devicecommunication_ : Objets communicants,
+  * _multimedia_ : Multimédia,
+  * _wellness_ : Bien-être,
+  * _monitoring_ : Monitoring,
+  * _health_ : Santé,
+  * _nature_ : Nature,
+  * _automatisation_ : Automatisme,
+  * _energy_ : Energie,
+* __hasDependency__ : Booléen pour indiquer si des dépendances doivent être installées,
+* __hasOwnDaemon__ : Booléen pour indiquer si le plugin utilise un daemon,
+* __maxDependencyInstallTime__ : Temps limite pour installer les dépendances,
+* __changelog__ : Lien vers le changelog,
+* __documentation__ : Lien vers la documentation.
