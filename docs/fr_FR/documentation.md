@@ -157,7 +157,7 @@ Il faut maintenant l'ajouter à la page puis l'initialiser :
 
 Pour ajouter un fichier CSS, il faudra ajouter la ligne suivante au plugin : 
 
-```
+```php
 include_file('desktop', 'ExtraTemplate', 'css', 'ExtraTemplate'); 
 ```
 
@@ -176,47 +176,47 @@ Il hérite de la classe eqLogic qui est la classe mère de tous les objets.
 ### Les méthodes de classe
 
 #### preInsert
-```
+```php
 public function preInsert()
 ```
 
 #### postInsert
-```
+```php
 public function postInsert()
 ```
 
 #### preSave
-```
+```php
 public function preSave()
 ```
 
 #### postSave
-```
+```php
 public function postSave()
 ```
 
 #### preUpdate
-```
+```php
 public function preUpdate()
 ```
 
 #### postUpdate
-```
+```php
 public function postUpdate()
 ```
 
 #### preRemove
-```
+```php
 public function preRemove()
 ```
 
 #### postRemove
-```
+```php
 public function postRemove()
 ```
 
 #### toHtml
-```
+```php
 public function toHtml($_version = 'dashboard')
 ```
 Permet de modifier l'affichage du widget.
@@ -224,37 +224,37 @@ Permet de modifier l'affichage du widget.
 ### Les méthodes statiques
 
 #### cron
-```
+```php
 public static function cron()
 ```
 Méthode appelée toutes les minutes par Jeedom.
 
 #### cron5
-```
+```php
 public static function cron5()
 ```
 Méthode appelée toutes les 5 minutes par Jeedom.
 
 #### cron15
-```
+```php
 public static function cron15()
 ```
 Méthode appelée toutes les 15 minutes par Jeedom.
 
 #### cron30
-```
+```php
 public static function cron30()
 ```
 Méthode appelée toutes les 30 minutes par Jeedom.
 
 #### cronHourly
-```
+```php
 public static function cronHourly()
 ```
 Méthode appelée toutes les heures par Jeedom.
 
 #### cronDaily
-```
+```php
 public static function cronDaily()
 ```
 Méthode appelée tous les jours par Jeedom.
@@ -304,14 +304,14 @@ Pour utiliser les traductions dans les fichiers, il y a 2 cas.
 ## Dans du code PHP
 
 Il faut utiliser la fonction __ :
-```
+```php
 __('Chaine à traduire', __FILE__);
 ```
 
 ## Dans du code HTML
 
 Il faut "entourer" la chaine de caractères avec 2 accolades : 
-```
+```html
 <button>{{Cliquez ici}}</button>
 ``` 
 
