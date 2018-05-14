@@ -3,7 +3,7 @@
   "name": "ExtraTemplate",
   "description": "Plugin template pour la création de plugin",
   "licence": "AGPL",
-  "author": "Jeedom-Plugins-Extra",
+  "author": "NextDom",
   "require": "3.0",
   "category": "programming",
   "hasDependency": false,
