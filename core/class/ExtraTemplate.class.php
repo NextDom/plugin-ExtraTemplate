@@ -112,5 +112,22 @@ class ExtraTemplate extends eqLogic
       }
      */
 
+        /**
+         * Non obligatoire
+         * Obtenir l'état du daemon
+         *
+         * @return [log] message de log
+         *         [state]  ok  Démarré
+         *                  nok Non démarré
+         *         [launchable] ok  Démarrable
+         *                      nok Non démarrable
+         *         [launchable_message] Cause de non démarrage
+         *         [auto]   0 Démarrage automatique désactivé
+         *                  1 Démarrage automatique activé
+    public static function deamon_info()
+    {
+    }
+         */
+
     /*     * **********************Getteur Setteur*************************** */
 }
