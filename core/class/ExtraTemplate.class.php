@@ -129,5 +129,14 @@ class ExtraTemplate extends eqLogic
     }
          */
 
+    /**
+         * Démarre le daemon
+         *
+         * @param Debug (par défault désactivé)
+    public static function deamon_start($_debug = false)
+    {
+    }
+         */
+
     /*     * **********************Getteur Setteur*************************** */
 }
