@@ -7,9 +7,9 @@
 
 # Présentation:
 
-Template de permettant de créér des plugins pour Jeedom
+Template de permettant de créer des plugins pour Jeedom
 
-# Documentation du plugin, comment créér un plugin:
+# Documentation du plugin, comment créer un plugin:
 
 *Effacer cette section dans votre plugin*
 
