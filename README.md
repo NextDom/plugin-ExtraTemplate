@@ -23,7 +23,7 @@ Template de permettant de céér des plugins pour Jeedom
 
 [Les bonnes pratiques](https://github.com/NextDom/NextDom/wiki/Bonnes-pratiques-pour-les-plugins)
 
-[Créér un plugun au standard NextDom](https://github.com/NextDom/NextDom/wiki/PROJET-:-Crit%C3%A8re-de-validation-d'un-plugin)
+[Créér un plugin au standard NextDom](https://github.com/NextDom/NextDom/wiki/PROJET-:-Crit%C3%A8re-de-validation-d'un-plugin)
 
 # Documentation du plugin:
 [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](docs/fr_FR/presentation.md)
